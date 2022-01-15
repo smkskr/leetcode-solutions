@@ -15,20 +15,6 @@ class Solution {
                 deque.pollLast();
             }
             deque.addLast(end);
-            // if(!deque.isEmpty()){
-            //     if(nums[end] < nums[deque.peekLast()]){
-            //         while(!deque.isEmpty() && nums[end] > nums[deque.peekFirst()]){
-            //            deque.pollFirst(); 
-            //         }
-            //         deque.addFirst(end);
-            //     }
-            //     if(nums[end] >= nums[deque.peekLast()]){
-            //         deque.pollLast();
-            //         deque.addLast(end);
-            //     }
-            // }else{
-            //     deque.add(end);
-            // }
             
             if(end - start + 1 == k){
                 
