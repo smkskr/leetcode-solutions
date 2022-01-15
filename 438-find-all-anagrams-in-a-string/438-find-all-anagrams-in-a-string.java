@@ -1,44 +1,35 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         
-        HashMap<Character, Integer> countPChar = new HashMap<>();
-        
-        HashMap<Character, Integer> countSubstringChar = new HashMap<>();
-        
+        int[] charCountMap = new int[26];
         List<Integer> list = new ArrayList<>();
-        
-        int windowSize = p.length();
-        int stringLength = s.length();
-        
+
         for(char ch : p.toCharArray()){
-            countPChar.put(ch, countPChar.getOrDefault(ch, 0)+1);
+            charCountMap[ch - 'a']++;
         }
         
         int start = 0;
         int end = 0;
+        int lengthOfMainString = s.length();
+        int windowSize = p.length();
         
-        while(end < stringLength){
+        int count = 0;
+        
+        while(end < lengthOfMainString){
             
             char ch = s.charAt(end);
-            countSubstringChar.put(ch, countSubstringChar.getOrDefault(ch, 0)+1);
+            charCountMap[ch - 'a']--;
+            if(charCountMap[ch - 'a'] >= 0)count++;
+            
+
             
             if(end - start + 1 == windowSize){
-                int len = 0;
-                for(Map.Entry<Character, Integer> entry : countSubstringChar.entrySet()){
-                    char key = entry.getKey();
-                    int count = entry.getValue();
-                                  
-                    if(countPChar.containsKey(key)){
-                        if(countPChar.get(key) == count)len += count;
-                        else break;
-                    }
-                }
                 
-                if(len == windowSize)list.add(start);
-                
+                if(count == windowSize)list.add(start);
                 char firstCharacter = s.charAt(start);
-                
-                countSubstringChar.put(firstCharacter,countSubstringChar.get(firstCharacter) - 1);
+                if(charCountMap[firstCharacter - 'a']++ >= 0){
+                    count--;
+                }
                 
                 start++;
             }
