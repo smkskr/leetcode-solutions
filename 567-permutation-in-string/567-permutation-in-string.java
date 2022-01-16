@@ -28,11 +28,21 @@ class Solution {
             char ch = s2.charAt(end);
             charCountMap[ch - 'a']--;
             
+            //if the character count is greater than zero then increment the count variable by 1
             if(charCountMap[ch - 'a'] >= 0)count++;
             
             if(end - start + 1 == windowSize){
                 
+                //check whether count == windowsize if yes that means there is a permutation available
                 if(count == windowSize)return true;
+                
+                
+                /** 
+                * if there is no permutation for this window
+                * then increment the count of the first character of the window/substring
+                * and decrement the count variable as we are removing one character from the window/substring
+                */
+                
                 char firstChar = s2.charAt(start);
                 charCountMap[firstChar - 'a']++;
                 if(charCountMap[firstChar - 'a'] >= 1)count--;
