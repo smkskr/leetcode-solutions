@@ -15,10 +15,12 @@ class Solution {
             * remove the last element and insert the present element(maximum number) and continue
             * till the present element becomes maximum than all the elements.
             * 
-            * Why we do this ? --> We do this because if we encounter any maximum element then that element is               * going to be maximum for the previous windows.
+            * Why we do this ? --> We do this because if we encounter any maximum element then that element is               
+            * going to be maximum for the previous windows.
             * 
             * But what if the present number is smaller than the last element in the deque...then we just simply 
-            * put it in the queue as there is a chance that present number(which is currently smaller) can be               * maximum for the upcoming windows.
+            * put it in the queue as there is a chance that present number(which is currently smaller) can be               
+            * maximum for the upcoming windows.
             *
             * NOTE : Here we are storing the indices of the numbers in the array
             */
