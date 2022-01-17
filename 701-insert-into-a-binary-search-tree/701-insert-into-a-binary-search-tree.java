@@ -17,10 +17,17 @@ class Solution {
     public TreeNode insertIntoBST(TreeNode root, int val) {
        
         if(root == null)return new TreeNode(val);
-       solve(root, val);
+        if(val < root.val){
+            root.left = insertIntoBST(root.left, val);
+        }else{
+            root.right = insertIntoBST(root.right, val);
+        }
+        
         return root;
     }
     
+    //another method if the above method is not intuitive just call this method by replacing code
+    //from line 20 to 24;
     public void solve(TreeNode root, int val){
          if(root == null){
             return;
