@@ -26,6 +26,31 @@ class Solution {
         
         if(root == null)return null;
         
+        //iterativeSolution(root);
+        recursiveSolution(root);
+        
+        return root;
+    }
+    
+    public void recursiveSolution(Node root){
+        if(root == null)return;
+        
+        if(root.left != null){
+            root.left.next = root.right;
+            if(root.next != null){
+                root.right.next = root.next.left;
+            }
+        }
+        
+        recursiveSolution(root.left);
+        recursiveSolution(root.right);
+        
+        
+    }
+    
+    public void iterativeSolution(Node root){
+       
+        
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         
@@ -45,6 +70,7 @@ class Solution {
             }
         }
         
-        return root;
     }
+    
+    
 }
