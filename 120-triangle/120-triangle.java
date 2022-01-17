@@ -18,7 +18,7 @@ class Solution {
             
             for(int i = 0;i < size;i++){
                  
-              // if(i != 0){
+             
                     
                     int prevListAboveElement = (i == prevListSize) ? Integer.MAX_VALUE : prevList.get(i);
                     int prevListLeftDiagonalElement = (i - 1 == -1) ? Integer.MAX_VALUE : prevList.get(i - 1);
@@ -28,7 +28,7 @@ class Solution {
                 
                  if(index == len - 1)//calculate min value of last index
                  res = Math.min(res, currList.get(i));
-                //}
+              
             }
             
            
