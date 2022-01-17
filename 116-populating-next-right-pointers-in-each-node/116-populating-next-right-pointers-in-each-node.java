@@ -26,8 +26,8 @@ class Solution {
         
         if(root == null)return null;
         
-        //iterativeSolution(root);
-        recursiveSolution(root);
+        iterativeSolution(root);
+        //recursiveSolution(root);
         
         return root;
     }
