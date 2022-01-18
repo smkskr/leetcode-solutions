@@ -23,8 +23,8 @@ class Solution {
         
         if(isValidBST(root.left) == false)return false;
         
-        if(prev >= root.val)return false;
-        else prev = root.val; 
+        if(prev < root.val)prev = root.val;else return false;
+        
         
         return isValidBST(root.right);
        
