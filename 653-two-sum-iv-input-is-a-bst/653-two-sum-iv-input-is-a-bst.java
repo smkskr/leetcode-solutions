@@ -16,22 +16,32 @@
 class Solution {
     public boolean findTarget(TreeNode root, int k) {
         
-        HashSet<Integer> set = new HashSet();
-        inorderTraversal(root, set);
+        List<Integer> list = new ArrayList<>();
+        inorderTraversal(root, list);
         
-        for(int num : set){
-            if((k - num != num) && set.contains(k - num))return true;
+        int leftPointer = 0;
+        int rightPointer = list.size() - 1;
+        
+        while(leftPointer < rightPointer){
+            
+            if(list.get(leftPointer) + list.get(rightPointer) == k)return true;
+            if(list.get(leftPointer) + list.get(rightPointer) < k){
+                leftPointer++;
+            }else{
+                rightPointer--;
+            }
+            
         }
         
         return false;
     }
     
-    public void inorderTraversal(TreeNode root, HashSet<Integer> set){
+    public void inorderTraversal(TreeNode root, List<Integer> list){
         
         if(root == null)return;
-        inorderTraversal(root.left, set);
-        set.add(root.val);
-        inorderTraversal(root.right, set);
+        inorderTraversal(root.left, list);
+        list.add(root.val);
+        inorderTraversal(root.right, list);
 
     }
 }
