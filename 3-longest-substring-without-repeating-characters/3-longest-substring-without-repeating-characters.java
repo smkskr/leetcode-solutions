@@ -20,18 +20,11 @@ class Solution {
                  maxLen = Math.max(maxLen, end - start + 1);
             }
            
-            
-            if(countMap.get(ch) > 1){
-                 
-                while(countMap.get(ch) > 1){
-                    char firstChar = s.charAt(start);
-                   
-                    countMap.put(firstChar,countMap.get(firstChar) - 1);
-                    start++;
-                }
-               
+            while(countMap.get(ch) > 1){
+                char firstChar = s.charAt(start);
+                countMap.put(firstChar,countMap.get(firstChar) - 1);
+                start++;
             }
-           
             end++;
         }
         
