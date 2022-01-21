@@ -11,7 +11,7 @@ class Solution {
     public int solve(int n, int[] dp){
         
         
-        if(n == 1 || n == 2 || n == 0)return n;
+        if(n == 1 || n == 2 || n == 0)return dp[n] = n;
         
         if(dp[n] != -1){
             return dp[n];
