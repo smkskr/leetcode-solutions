@@ -7,7 +7,7 @@ class Solution {
        
     }
     
-    //recursive solution
+    //memoized solution
     public int solve(int n, int[] dp){
         
         
