@@ -9,6 +9,7 @@ class Solution {
         return solve(nums, nums.length - 1, dp);
     }
     
+    //using memoization
     public int solve(int[] nums, int n, int[] dp){
         
         if(n == 0)return dp[0] = nums[0];
