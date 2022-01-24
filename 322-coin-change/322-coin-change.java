@@ -1,55 +1,48 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         
-        int n = coins.length;
-        int[] dp = new int[amount + 1];
+        int[] dp = new int[amount + 1]; //array for storing minimum number of coins for a particular amount
+        Arrays.fill(dp, Integer.MAX_VALUE);
         
-        Arrays.fill(dp, Integer.MAX_VALUE - 1);
         dp[0] = 0;
         
-        for(int i = 1;i <= amount;i++){
-            
-            for(int j = 0;j < n;j++){
+        for(int amt = 1;amt < dp.length;amt++){
+            for(int coin = 0;coin < coins.length;coin++){
                 
-                if(coins[j] <= i)
-                   
-                dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
+                if(coins[coin] <= amt){
+                    if(dp[amt - coins[coin]] != Integer.MAX_VALUE)
+                    dp[amt] = Math.min(dp[amt],1 + dp[amt - coins[coin]]);
+                }
             }
         }
         
-        /*
-        *
-        * To be used when calling recursive function
-        *
-        int res = solve(coins, coins.length, amount);
-        return res == Integer.MAX_VALUE - 1 ? -1 : res;
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+        
+        /**
+        * recursive call
+        int res = solve(coins, amount);
+        return res == Integer.MAX_VALUE ? -1 : res;
         */
-        
-        return dp[amount] == Integer.MAX_VALUE - 1 ? -1 : dp[amount];
     }
     
-    
-    //recursive function
-    public int solve(int[] coins, int n, int amount){
+    //recursive solution
+    public int solve(int[] coins, int amount){
         
-       if(amount == 0)return 0;
-       
+        if(amount == 0)return 0;
         
-        int result = Integer.MAX_VALUE -1 ;
+        int res = Integer.MAX_VALUE;
         
-        for(int i = 0; i < n; i++){
+        for(int i = 0;i < coins.length;i++){
             
-            //int subResult ;
+            int sub_res;
             if(coins[i] <= amount){
-               int subResult = solve(coins, n, amount - coins[i]);
-                //if(subResult != Integer.MAX_VALUE){
-                    result = Math.min(result, subResult + 1);
-                //}
-                
+                sub_res = solve(coins, amount - coins[i]);
+                if(sub_res != Integer.MAX_VALUE)
+                res = Math.min(res, 1 + sub_res);
             }
         }
         
-        return result;
+        return res;
+        
     }
-   
 }
