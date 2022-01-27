@@ -21,10 +21,11 @@ class Solution {
             
             sum += nums[index];
            
+            // if sum == 0 then there are equal number of zeros and ones upto that index
             if(sum == 0){
-                 sumMap.put(sum, index);
                 maxLen = Math.max(index + 1,maxLen);
             }
+            // if the map contains the key/sum then there are equal number of zeros and ones from earlier position of the key                 // upto the current position
             else if(sumMap.containsKey(sum)){
                 int val = sumMap.get(sum);
                 maxLen = Math.max(maxLen, index - val);
