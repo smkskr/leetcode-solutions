@@ -6,6 +6,8 @@ class Solution {
         int leftPointer = 0;
         int rightPointer = nums.length - 1;
         
+        // the idea is to shift zero to left of 1
+        // and shift two to right of 1
         while(index <= rightPointer){
             
             if(nums[index] == 0){
