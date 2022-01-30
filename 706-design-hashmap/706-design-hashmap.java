@@ -3,7 +3,7 @@ class MyHashMap {
    int[] keyValue;
     
     public MyHashMap() {
-        keyValue = new int[1000001];
+        keyValue = new int[1000001];//defining size of array as 1000001 since constraint of key in the description is given as 0 <= key <= 1000000
         Arrays.fill(keyValue, -1);
     }
     
