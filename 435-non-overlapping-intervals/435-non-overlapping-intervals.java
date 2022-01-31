@@ -16,12 +16,10 @@ class Solution {
                 currentInterval[1] = Math.min(currentInterval[1],intervals[index][1]);
                 count++;
             }else{
-                currentInterval = intervals[index];
-                //mergedArray.add(currentInterval);     
+                currentInterval = intervals[index];   
             }
         }
         
         return count;
-        //intervals.length - mergedArray.size();
     }
 }
