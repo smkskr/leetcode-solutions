@@ -2,7 +2,7 @@ class Solution {
     public int findMaxLength(int[] nums) {
         
         int len = nums.length;
-        HashMap<Integer, Integer> sumMap = new HashMap<>();
+        HashMap<Integer, Integer> sumMap = new HashMap<>();//map to store the index of the sum
         
         //replace all zeros with minus 1(-1)
         for(int i = 0;i < len;i++){
@@ -25,7 +25,8 @@ class Solution {
             if(sum == 0){
                 maxLen = Math.max(index + 1,maxLen);
             }
-            // if the map contains the key/sum then there are equal number of zeros and ones from earlier position of the key                 // upto the current position
+            // if the map contains the key/sum then there are equal number of zeros and ones from earlier position of the key                 
+            // upto the current position
             else if(sumMap.containsKey(sum)){
                 int val = sumMap.get(sum);
                 maxLen = Math.max(maxLen, index - val);
@@ -36,4 +37,5 @@ class Solution {
         
         return maxLen;
     }
+    
 }
