@@ -2,6 +2,13 @@ class Solution {
     public boolean increasingTriplet(int[] nums) {
         
         int len = nums.length;
+        //return withExtraSpace(nums, len);
+        return withoutExtraSpace(nums);
+    }
+    
+    //with extra space
+    public boolean withExtraSpace(int[] nums, int len){
+        
         int[] leftSmaller = new int[len];
         int[] rightGreater = new int[len];
         
@@ -22,5 +29,22 @@ class Solution {
         }
         
         return false;
+    }
+    
+    //without extra space
+    public boolean withoutExtraSpace(int[] nums){
+        
+        int firstMin = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+        
+        for(int num : nums){
+            
+            if(num <= firstMin)firstMin = num;
+            else if(num <= secondMin)secondMin = num;
+            else return true;
+        }
+        
+        return false;
+       
     }
 }
