@@ -17,13 +17,14 @@ class Solution {
         for(Map.Entry<Character, Integer> entry : charCountMap.entrySet()){
             
             int value = entry.getValue();
-            if(value % 2 == 0)maxLen += value;
+            if(value % 2 == 0)maxLen += value;//if char count is even then add it to the length
             else {
-                oddFlag = 1;
-                maxLen += value - 1;
+                oddFlag = 1;//this value needs to be added at last
+                maxLen += value - 1;// if char count is odd then subtract 1 from the value since palindrome can contain only even values
             }
         }
-        
+        // add the oddFlag to the result because if oddFlag is 1 that means there is/are odd values
+        // and hence it needs to be added to the string(in the center) to make it a palindrome
         return maxLen + oddFlag;
     }
 }
