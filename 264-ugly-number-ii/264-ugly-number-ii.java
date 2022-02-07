@@ -2,35 +2,40 @@ class Solution {
     public int nthUglyNumber(int n) {
         
         int[] dp = new int[n];
-        dp[0] = 1;
         
-        int i2 = 0, i3 = 0, i5 = 0;
-        int nextMultipleOfTwo = 1 * 2;
-        int nextMultipleOfThree = 1 * 3;
-        int nextMultipleOfFive = 1 * 5;
-        int uglyNo = 1;
-        for(int i = 1;i < n;i++){
+        int factor2 = 2;
+        int factor3 = 3;
+        int factor5 = 5;
+        
+        int factor2Count = 0;
+        int factor3Count = 0;
+        int factor5Count = 0;
+        
+        int uglyNum = 1;//first factor
+        dp[0] = uglyNum;
+        int index = 1;
+        
+        while(index < n){
             
-            uglyNo = Math.min(nextMultipleOfTwo, Math.min(nextMultipleOfThree, nextMultipleOfFive));
+            uglyNum = Math.min(factor2, Math.min(factor3, factor5));
+            dp[index++] = uglyNum;
             
-            dp[i] = uglyNo;
+            if(uglyNum == factor2){
+                factor2Count++;
+                factor2 = dp[factor2Count] * 2;
+            }
+            if(uglyNum == factor3){
+                factor3Count++;
+                
+                factor3 = dp[factor3Count] * 3;
+            }
+            if(uglyNum == factor5){
+                factor5Count++;
+                factor5 = dp[factor5Count] * 5;
+            }
             
-            if(uglyNo == nextMultipleOfTwo){
-                i2++;
-                nextMultipleOfTwo = dp[i2] * 2;
-            }
-            if(uglyNo == nextMultipleOfThree){
-                i3++;
-                nextMultipleOfThree = dp[i3] * 3;
-            }
-            if(uglyNo == nextMultipleOfFive){
-                i5++;
-                nextMultipleOfFive = dp[i5] * 5;
-            }
         }
         
-        return uglyNo;
+        return uglyNum;
     }
-    
-    
 }
