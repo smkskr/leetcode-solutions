@@ -19,6 +19,7 @@ public class Solution {
         
         int diff = lenA - lenB;
         
+        //skipping list A so that both the lists should have same length
         for(int i = 1;i <= diff;i++){
             headA = headA.next;
         }
