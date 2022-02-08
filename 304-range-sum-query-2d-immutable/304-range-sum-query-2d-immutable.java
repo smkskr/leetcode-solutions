@@ -8,7 +8,7 @@ class NumMatrix {
         int cols = matrix[0].length;
         
         
-        //calculate sum of all rows
+        //calculate cumulative sum of each cell for all rows
         for(int row = 0;row < rows;row++){
             for(int col = 1;col < cols;col++){
                 matrix[row][col] += matrix[row][col - 1];
