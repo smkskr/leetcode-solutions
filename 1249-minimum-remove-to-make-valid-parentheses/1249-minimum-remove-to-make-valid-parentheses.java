@@ -48,23 +48,10 @@ class Solution {
         
         StringBuffer result = new StringBuffer();
         int index = 0;
-        int i = 0;
         int size = indexNotIncluded.size();
-//         while(index < indexNotIncluded.size()){
-//             if(i != indexNotIncluded.get(index)){
-//                 result += s.charAt(i);
-//             }else{
-//                 index++;
-//             }
-//             i++;
-//         }
+
         
-//         while(i < len){
-//             result += s.charAt(i);
-//             i++;
-//         }
-        
-        for(i = 0;i < size;i++){
+        for(int i = 0;i < size;i++){
             int limit = indexNotIncluded.get(i);
             result.append(s.substring(index,limit));
             index = limit + 1;
