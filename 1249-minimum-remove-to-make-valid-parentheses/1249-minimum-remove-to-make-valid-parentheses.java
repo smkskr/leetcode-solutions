@@ -1,14 +1,33 @@
-class IndexMap{
-    
-    char _element;
-    int _index;
-    public IndexMap(char element,int index){
-        _element = element;
-        _index = index;
-    }
-}
 class Solution {
     public String minRemoveToMakeValid(String s) {
+        StringBuilder result = new StringBuilder(s);
+        Stack<Integer> stack = new Stack();
+        
+        int len = s.length();
+        for(int i = 0;i < len;i++){
+            
+            char ch = s.charAt(i);
+            if(ch == '(')stack.add(i);
+            else if(ch == ')'){
+                
+                if(!stack.isEmpty()){
+                    stack.pop();
+                }else{
+                    result.setCharAt(i,'*');
+                }
+            }
+        }
+        
+        while(!stack.isEmpty()){
+            result.setCharAt(stack.pop(), '*');
+        }
+        
+        return result.toString().replaceAll("\\*","");
+    }
+    
+    //return usingStackAsIndexMap(s);
+    
+    public String usingStackAsIndexMap(String s) {
         
         Stack<IndexMap> stack = new Stack<>();
         List<Integer> indexNotIncluded = new ArrayList<>();
@@ -60,5 +79,19 @@ class Solution {
         result.append(s.substring(index, len));
         return result.toString();
     }
+
+
+
 }
 
+class IndexMap{
+    
+    char _element;
+    int _index;
+    public IndexMap(char element,int index){
+        _element = element;
+        _index = index;
+    }
+}
+
+    
