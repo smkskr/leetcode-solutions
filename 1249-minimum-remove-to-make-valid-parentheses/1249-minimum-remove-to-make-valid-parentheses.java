@@ -1,5 +1,12 @@
 class Solution {
+    
     public String minRemoveToMakeValid(String s) {
+         return usingStackAsIndexMap(s);
+    //return usingStackAndPlaceHolder(s);
+    }
+   
+    
+    public String usingStackAndPlaceHolder(String s) {
         StringBuilder result = new StringBuilder(s);
         Stack<Integer> stack = new Stack();
         
@@ -25,7 +32,7 @@ class Solution {
         return result.toString().replaceAll("\\*","");
     }
     
-    //return usingStackAsIndexMap(s);
+    
     
     public String usingStackAsIndexMap(String s) {
         
@@ -47,10 +54,8 @@ class Solution {
                     
                     char currCh = obj._element;
                     
-                    if(currCh == '(')stack.pop();
-                    else{
-                        indexNotIncluded.add(i);
-                    }
+                   stack.pop();
+                  
                         
                 }else{
                     indexNotIncluded.add(i);            
