@@ -26,7 +26,7 @@ class MinStack {
         
         
         
-       // if(!stack.isEmpty()){
+      
             
             int val = stack.peek();
             
@@ -35,19 +35,13 @@ class MinStack {
             int len = minValList.size();
             if(minValList.get(len - 1) == val)minValList.remove(len - 1);
             
-       // }
+       
        
         
     }
     
     public int top() {
-        
-        //if(!stack.isEmpty()){
-            
             return stack.peek();
-        //}
-        
-        //return
     }
     
     public int getMin() {
