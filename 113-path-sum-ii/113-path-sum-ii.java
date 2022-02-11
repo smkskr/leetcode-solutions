@@ -32,12 +32,9 @@ class Solution {
         }
         if(root.left == null && root.right == null){
             if(targetSum == root.val){
-                List<Integer> newList = new ArrayList<>();
-                for(int num : list){
-                    newList.add(num);
-                }
-                newList.add(root.val);
-                result.add(newList);
+                list.add(root.val);
+                result.add(new ArrayList<>(list));
+                list.remove(list.size() - 1);
             }  
             
             return;
