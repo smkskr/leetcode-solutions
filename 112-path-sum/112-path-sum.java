@@ -19,7 +19,7 @@ class Solution {
         
         if(root == null)return false;
         
-        if(targetSum - root.val == 0 && root.left == null && root.right == null){
+        if(root.left == null && root.right == null && targetSum - root.val == 0){
             return true;
         }
     
