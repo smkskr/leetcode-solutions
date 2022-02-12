@@ -13,7 +13,7 @@ class Solution {
         int end = 0;
         String result = "";
         int count = 0;
-        int minLen = Integer.MAX_VALUE;
+        int minLen = lenS;
         
         while(end < lenS){
             
@@ -27,7 +27,7 @@ class Solution {
                 while(count == lenT){
                     
                     int len = end - start + 1;
-                    if(len < minLen){
+                    if(len <= minLen){
                         minLen = len;
                         result = s.substring(start,end + 1);
                     }
