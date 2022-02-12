@@ -101,7 +101,7 @@ class Solution {
     // Function to insert a node in a BST.
     Node insert(Node root, int Key) {
         // your code here
-        if(root == null)return null;
+       /// if(root == null)return null;
         if(Key > root.data){
             if(root.right == null){
                 root.right = new Node(Key);
