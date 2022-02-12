@@ -30,15 +30,7 @@ class BSTIterator {
             
         }
         TreeNode node = stack.pop();
-        if(node.right != null){
-            current = node.right;
-            while(current != null){
-                 stack.push(current);
-                current = current.left;
-               
-            }
-        }
-       
+        current = node.right;
         return node.val;
     }
     
