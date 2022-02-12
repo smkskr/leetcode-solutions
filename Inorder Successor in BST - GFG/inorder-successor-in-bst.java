@@ -127,16 +127,6 @@ class Solution
     // returns the inorder successor of the Node x in BST (rooted at 'root')
 	public Node inorderSuccessor(Node root,Node x)
          {
-          //add code here.
-        //   if(x.data < root.data){
-        //       return inorderSuccessor(root.left, x);
-        //   }else if(x.data > root.data){
-        //       return inorderSuccessor(root.right, x);
-        //   }else{
-              
-        //       if(root.right == null)return 
-        //   }
-          
           return inorderSuccessorUtil(root, x, null);
          }
          
