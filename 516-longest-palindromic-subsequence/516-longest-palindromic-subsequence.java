@@ -3,17 +3,16 @@ class Solution {
         
         int len = s.length();
         
-        String reverse = reverse(s);
-        
         if(len == 0 || len == 1)return len;
+        
+        String reverseString = reverseString(s);
         
         int[][] dp = new int[len + 1][len + 1];
         
         for(int row = 1;row <= len;row++){
             for(int col = 1;col <= len;col++){
-                
-                if(s.charAt(row - 1) == reverse.charAt(col - 1)){
-                    dp[row][col] = 1 + dp[row-1][col-1];
+                if(s.charAt(row - 1) == reverseString.charAt(col - 1)){
+                    dp[row][col] = 1 + dp[row - 1][col - 1];
                 }else{
                     dp[row][col] = Math.max(dp[row - 1][col], dp[row][col - 1]);
                 }
@@ -24,22 +23,16 @@ class Solution {
         
     }
     
-    public String reverse(String word){
+    public String reverseString(String s){
         
-        char[] arr = word.toCharArray();
+        char[] array = s.toCharArray();
+        int end = array.length - 1;
+        String result = "";
         
-        int startIndex = 0;
-        int endIndex = arr.length - 1;
-        
-        while(startIndex < endIndex){
-            
-            char temp = arr[startIndex];
-            arr[startIndex] = arr[endIndex];
-            arr[endIndex] = temp;
-            startIndex++;
-            endIndex--;
+        for(int index = end;index >= 0;index--){
+            result = result + array[index];
         }
         
-        return String.valueOf(arr);
+        return result;
     }
 }
