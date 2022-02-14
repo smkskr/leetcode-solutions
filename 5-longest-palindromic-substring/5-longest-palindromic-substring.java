@@ -2,51 +2,34 @@ class Solution {
     public String longestPalindrome(String s) {
         
         int len = s.length();
-        int start = 0,end = 0;
+        int start = 0;
+        int end = 0;
         boolean[][] dp = new boolean[len][len];
         
+        // We only consider the upper half of the primary diagonal since palindrome elements are mirror of their half elements
+        // In this algorithm we fill each cell diagonally starting with the primary diagonal as it represents the single element.
+        // Each diagonal represents the length of the string...primary diagonal is length == 1 and as we go above,
+        // length of the string increases.
         for(int gap = 0;gap < len;gap++){
-            
-            for(int i = 0;i + gap < len;i++){
+            for(int index = 0;index + gap < len;index++){
                 
-                if(gap == 0)dp[i][i+gap] = true;
+                if(gap == 0)dp[index][index] = true;//filling all diagonals with value "true", as single elements are always palindrome;
                 else if(gap == 1){
-                    if(s.charAt(i) == s.charAt(i+gap)){
-                        dp[i][i+gap] = true;
-                        start = i;
-                        end = i + gap;
+                    if(s.charAt(index) == s.charAt(index + gap)){
+                        dp[index][index + gap] = true;
+                        start = index;
+                        end = index + gap;
                     }
                 }else{
-                    if(s.charAt(i) == s.charAt(i+gap) && dp[i+1][i+gap-1] == true){
-                        dp[i][i+gap] = true;
-                        start = i;
-                        end = i + gap;
+                    if(s.charAt(index) == s.charAt(index + gap) && dp[index + 1][index + gap - 1] == true){
+                        dp[index][index + gap] = true;
+                        start = index;
+                        end = index + gap;
                     }
                 }
-                
             }
         }
-        //System.out.println(longestPalindromeUtil(0,s.length() - 1,s));
-        return s.substring(start,end+1);
-    }
-    
-    
-    
-    //recursive function to calculate the length of longest plaindromic substring
-    public int longestPalindromeUtil(int b, int e, String s){
         
-        if(b > e){
-            return 0;
-        }
-        
-        if(e == b)return 1;
-        
-        if(s.charAt(b) == s.charAt(e)){
-            
-            if(e - b == 1) return 2;
-            return 2 + longestPalindromeUtil(b+1,e-1,s);
-        }
-        
-        return Math.max(longestPalindromeUtil(b+1,e,s),longestPalindromeUtil(b,e-1,s));
+        return s.substring(start, end + 1);
     }
 }
