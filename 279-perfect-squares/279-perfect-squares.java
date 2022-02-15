@@ -1,48 +1,47 @@
 class Solution {
     public int numSquares(int n) {
         
-        List<Integer> listOfPerfectSquares = findPerfectSquares(1, n);
+        List<Integer> perfectSquareList = perfectSquaresList(1,n);
+        int size = perfectSquareList.size();
         
-        int size = listOfPerfectSquares.size();
-        int[] dp = new int[n+1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp,Integer.MAX_VALUE);
         dp[0] = 0;
         for(int sum = 1;sum <= n;sum++){
-            for(int index = 0;index < size;index++){
-                
-                
-                if(listOfPerfectSquares.get(index) <= sum){
-                    int subRes = dp[sum - listOfPerfectSquares.get(index)];
+            for(int j = 0;j < size;j++){
+                    
+                if(perfectSquareList.get(j) <= sum){
+                    int subRes = dp[sum - perfectSquareList.get(j)];
                     if(subRes != Integer.MAX_VALUE){
                         dp[sum] = Math.min(dp[sum], 1 + subRes);
                     }
-                }
+                }    
             }
         }
         
         return dp[n];
     }
     
-   
-    
-    //function to find perfect squares
-   public List<Integer> findPerfectSquares(int start, int end){
+    public List<Integer> perfectSquaresList(int start, int end){
         
         List<Integer> list = new ArrayList<>();
         
-        int number = (int)Math.ceil(Math.sqrt(start));//calculate the starting number
+        int number = (int)Math.ceil(Math.sqrt(start));//starting number
         
-        int perfectSquare = number * number; // calculate the first perfect square
+        int perfectSquare = number * number; //first perfect Square
         
-        int difference = number * 2 + 1; //calculate the difference
+        /**
+         * Perfect squares : 1 , 4 , 9 , 16 , 25, . . . 
+         * Difference between consecutive perfect squares : 3 , 5 , 7 , 9 
+         */
+        int difference = number * 2 + 1;
         
-       
-        
-        while(perfectSquare >= start && perfectSquare <= end){
+        while(perfectSquare <= end){
             
             list.add(perfectSquare);
             perfectSquare = perfectSquare + difference;
-            difference += 2;
+            difference+=2;
+            
         }
         
         return list;
