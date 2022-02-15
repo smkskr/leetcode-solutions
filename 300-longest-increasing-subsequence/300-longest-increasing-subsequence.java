@@ -1,21 +1,50 @@
 class Solution {
+    
+    
     public int lengthOfLIS(int[] nums) {
         
-        int len = nums.length;
-        int[] dp = new int[len];
-        dp[0] = 1;
-        int maxLen = 1;
-        for(int i = 1;i < len;i++){
-            dp[i] = 1;
-            for(int j = 0; j < i;j++){
-                if(nums[j] < nums[i]){
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
-            
-            maxLen = Math.max(maxLen, dp[i]);
-        }
+       int len = nums.length;
+       int[] dp = new int[len];
+       Arrays.fill(dp, 1);
+       int result = 0; 
+       // for(int row = 1;row < len;row++){
+       //     for(int col = 1;col < len;col++){
+       //         if(nums[col - 1] > nums[row - 1]){
+       //             dp[row][col] = Math.max(1 + dp[])
+       //         }
+       //     }
+       // }
+       int maxLen = 0; 
+       for(int i = 0;i < len;i++){
+           
+           for(int j = 0;j <= i;j++){
+               if(nums[j] < nums[i]){
+                   dp[i] = Math.max(dp[i],1 + dp[j]);
+               } 
+     
+           }
+           
+           maxLen = Math.max(maxLen, dp[i]);
+       }
         
         return maxLen;
+       //return solve(nums, Integer.MAX_VALUE, len);
+       
+    }
+    
+    public int solve(int[] nums,int lastValue, int n){
+        
+        if(n == 0){
+           return 0;
+        }
+        
+       
+        if(lastValue > nums[n - 1])
+        return Math.max(1 + solve(nums, nums[n - 1], n - 1), solve(nums, lastValue, n - 1));
+        else
+        return solve(nums, lastValue, n - 1);
+        
+       
+       
     }
 }
