@@ -6,14 +6,6 @@ class Solution {
        int len = nums.length;
        int[] dp = new int[len];
        Arrays.fill(dp, 1);
-       int result = 0; 
-       // for(int row = 1;row < len;row++){
-       //     for(int col = 1;col < len;col++){
-       //         if(nums[col - 1] > nums[row - 1]){
-       //             dp[row][col] = Math.max(1 + dp[])
-       //         }
-       //     }
-       // }
        int maxLen = 0; 
        for(int i = 0;i < len;i++){
            
