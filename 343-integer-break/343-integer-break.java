@@ -1,26 +1,26 @@
 class Solution {
     public int integerBreak(int n) {
         
-//         int[] dp = new int[n + 1];
-//         dp[0] = 1;
-//         dp[1] = 1;
-//         dp[2] = 1;
+        int[][] dp = new int[n][n + 1];
+       // Arrays.fill(dp, 1);
         
-//         for(int value = 3;value <= n;value++){
-//             int subRes = 1;
-//             int target = value;
-//             for(int i = 1;i < n;i++){
-//                 if(i <= value){
-//                     subRes = i * dp[target - i];
-//                     target = target - i;
-//                 }
+        for(int row = 0;row < n;row++){
+            dp[row][0] = 1;
+        }
+        
+        
+        for(int row = 1;row < n;row++){
+            for(int col = 1;col <= n;col++){
                 
-//             }
-//             dp[value] = Math.max(dp[value], subRes);
-//         }
-        
-      // return dp[n];
-       return solve(n - 1, n);
+                if(row <= col){
+                    dp[row][col] = Math.max(row * dp[row][col - row], dp[row - 1][col]);
+                }else{
+                    dp[row][col] = dp[row - 1][col];
+                }
+            }
+        }
+      return dp[n - 1][n];
+      // return solve(n - 1, n);
     }
     
     public int solve(int n, int target){
