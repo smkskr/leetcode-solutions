@@ -3,10 +3,7 @@
 //The objective is to visit all the nodes(if possible) and return true or false accordingly
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-        
-        return bfs(rooms);
-        
-        
+        return bfs(rooms);    
     }
     
     public boolean bfs(List<List<Integer>> rooms){
