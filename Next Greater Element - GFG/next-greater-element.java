@@ -40,12 +40,14 @@ class Solution
         stack.push(0);
         for(int i = 1;i < n;i++){
             
+            //popping out elements if the current array element is greater than the top of stack element
             while(!stack.isEmpty() && arr[i] > arr[stack.peek()]){
                 result[stack.pop()] = arr[i];
             }
             stack.push(i);
         }
         
+        //if any elements are left in stack that means they have no next greater element
         while(!stack.isEmpty()){
             result[stack.pop()] = -1;
         }
