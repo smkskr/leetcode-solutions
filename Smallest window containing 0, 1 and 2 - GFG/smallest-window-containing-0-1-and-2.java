@@ -48,7 +48,8 @@ class Solution {
             while(count == 3 && start < len){
                 minLen = Math.min(minLen, end - start + 1);
                 int firstDigit = S.charAt(start) - '0';
-                if(countDigit[firstDigit]++ >= 0)count--;
+                countDigit[firstDigit]++;
+                if(countDigit[firstDigit] > 0)count--;
                 start++;
             }
             end++;
