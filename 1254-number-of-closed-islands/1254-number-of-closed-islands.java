@@ -1,6 +1,7 @@
 class Solution {
     public int closedIsland(int[][] grid) {
         
+        //exclude corner islands as they won't be surrounded with water from all directions
         excludeCornerIslands(grid);
         
         int rows = grid.length;
@@ -57,7 +58,7 @@ class Solution {
         
     }
     
-    
+    //perform dfs
     public void dfs(int[][] grid, int row, int col){
         
         if(row == -1 || row == grid.length || col == -1 || col == grid[0].length || grid[row][col] == 1){
