@@ -97,6 +97,8 @@ class Solution
             minHeap.add(arr[i]);
         }
         
+        
+        //pop the top element and push the next element of the list in the min heap
         while(!minHeap.isEmpty()){
             
             Node top = minHeap.poll();
