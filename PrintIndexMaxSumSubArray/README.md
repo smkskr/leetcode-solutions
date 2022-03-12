@@ -1,4 +1,7 @@
 Given an array arr[], the task is to print the indices of the sub array which has the largest sum.<br>
+
+<hr>
+
 Input: arr = [-2, -3, 4, -1, -2, 1, 5, -3]<br>
 Output: [2, 6]<br>
 Explanation: <br>
