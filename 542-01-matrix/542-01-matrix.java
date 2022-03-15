@@ -1,38 +1,54 @@
 class Solution {
     public int[][] updateMatrix(int[][] mat) {
         
-       int[][] result = new int[mat.length][mat[0].length];
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                result[i][j] = Integer.MAX_VALUE - 20000; //to avoid overflow
-            }
+        int rows = mat.length;
+        int cols = mat[0].length;
+        int result[][] = new int[rows][cols];
+        
+        //filling with Integer.MAX_VALUE - 20000
+        // Why Integer.MAX_VALUE - 20000 ? --> To avoid integer overflow(check constraints ot understand why 20000 is chosen)
+        for(int row = 0;row < rows;row++){
+             Arrays.fill(result[row], Integer.MAX_VALUE - 20000);
         }
-        //first pass (checking left and top)
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                if (mat[i][j] == 0) {
-                    result[i][j] = 0;
-                } else {
-                    if (i > 0) {
-                        result[i][j] = Math.min(result[i][j], result[i - 1][j] + 1);
+       
+        
+        //in first parsing check adjacent left and top values
+        for(int row = 0;row < rows;row++){
+            for(int col = 0;col < cols;col++){
+                if(mat[row][col] == 0)result[row][col] = 0;
+                else{
+                    
+                    //check for left
+                    if(col > 0){
+                        result[row][col] = Math.min(result[row][col], result[row][col - 1] + 1);
                     }
-                    if (j > 0) {
-                        result[i][j] = Math.min(result[i][j], result[i][j - 1] + 1);
+                    //check for top
+                    if(row > 0){
+                        result[row][col] = Math.min(result[row][col], result[row - 1][col] + 1);
                     }
                 }
             }
         }
-        //second pass (checking right and bottom)
-        for (int i = mat.length - 1; i >= 0; i--) {
-            for (int j = mat[0].length - 1; j >= 0; j--) {
-                if (i < mat.length - 1) {
-                    result[i][j] = Math.min(result[i][j], result[i + 1][j] + 1);
-                }
-                if (j < mat[0].length - 1) {
-                    result[i][j] = Math.min(result[i][j], result[i][j + 1] + 1);
+        
+        //in second parsing check adjacent right and bottom values
+        for(int row = rows - 1;row >= 0;row--){
+            for(int col = cols - 1;col >= 0;col--){
+                if(mat[row][col] == 0)result[row][col] = 0;
+                else{
+                    
+                    //check for right
+                    if(col < cols - 1){
+                        result[row][col] = Math.min(result[row][col], result[row][col + 1] + 1);
+                    }
+                    //check for bottom
+                    if(row < rows - 1){
+                        result[row][col] = Math.min(result[row][col], result[row + 1][col] + 1);
+                    }
+                    
                 }
             }
         }
+        
         return result;
     }
 }
