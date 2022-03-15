@@ -8,26 +8,25 @@ class Solution {
     
     public boolean bfs(List<List<Integer>> rooms){
         
-        boolean[] visited = new boolean[rooms.size()];
+        int nodes = rooms.size();
+        boolean[] visited = new boolean[nodes];
         Queue<Integer> queue = new LinkedList<>();
-        int source = 0;
-        queue.add(source);
-        visited[source] = true;
+        queue.add(0);
+        visited[0] = true;
         int count = 1;
+        
         while(!queue.isEmpty()){
             
-            int u = queue.poll();
-            for(int v : rooms.get(u)){
+            int source = queue.poll();
+            for(int v : rooms.get(source)){
                 if(visited[v] == false){
-                    visited[v] = true;
-                    count++;
                     queue.add(v);
+                    count++;
+                    visited[v] = true;
                 }
-                
             }
         }
         
-        if(count == visited.length)return true;
-        return false;
+        return count == nodes;
     }
 }
