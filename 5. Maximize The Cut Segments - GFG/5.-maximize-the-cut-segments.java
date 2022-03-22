@@ -71,6 +71,7 @@ class Solution
        //return solve(arr, n);
     }
     
+    //recursion
     public int solve(int[] arr, int sum){
         
         if(sum == 0)return 0;
