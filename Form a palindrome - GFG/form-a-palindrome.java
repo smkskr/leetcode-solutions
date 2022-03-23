@@ -23,6 +23,13 @@ class GFG
 
 //User function Template for Java
 
+/**
+ * This question is similar to finding LCS of two strings
+ * Instead of finding LCS of two different strings, 
+ * here we need to find LCS between the original string and the reverse of this string
+ * 
+ * Minimum insertions to make a string will be the difference between length of the original string and LCS of them
+ */
 class Solution{
     int findMinInsertions(String S){
         // code here
