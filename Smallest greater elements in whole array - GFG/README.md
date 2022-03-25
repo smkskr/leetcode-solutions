@@ -1,5 +1,5 @@
 # Smallest greater elements in whole array
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array <strong>A</strong> of <strong>N</strong> length. We need to calculate the next greater element for each element in a given array. If the next greater element is not available in a given array then we need to fill <strong>-10000000</strong> at that index place.</span></p>
 
