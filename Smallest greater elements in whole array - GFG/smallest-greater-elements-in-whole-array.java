@@ -61,30 +61,47 @@ class Complete{
    
     // Function for finding maximum and value pair
     public static int[] greaterElement (int arr[], int n) {
-        // Complete the function
+        
+        // Adding all elements in a set to remove duplicates
         Set<Integer> set = new HashSet<Integer>();
         for(int num : arr){
             set.add(num);
         }
+        
+        
+        // Now copy all the elements of the set to an auxillary array
         int size = set.size();
+        
         int[] copyArr = new int[size];
-         int index = 0;
+        int index = 0;
         for(int num : set){
             copyArr[index] = num;
             index++;
         }
+        
+        // Sort the auxiallary array to perform binary search
+        
         Arrays.sort(copyArr);
+        
         int[] result = new int[n];
-       index = 0;
+        
+        index = 0;
         for(int num : arr){
+            
+            // find the index of the key using binary search
             int keyIndex = binarySearch(copyArr, num, size);
+            
+            // next greater element will be the next index of the auxillary array
+            // if the key is the last element then store -10000000
             result[index] = keyIndex + 1 == size ? -10000000 : copyArr[keyIndex + 1];
             index++;
+            
         }
+        
         return result;
        
     }
-//  6,7,12,13
+
     public static int binarySearch(int[] arr, int key, int n){
         
         int low = 0;
