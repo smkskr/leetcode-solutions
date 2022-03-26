@@ -53,12 +53,9 @@ class Solution {
                     index = start;
                     
                 }
-                
-                //if(arr[start] < 0)sum = sum + arr[start];
-                //else 
                 sum = sum - arr[start];
                 start++;
-                //System.out.println(sum + ", maxSUM : " + maxSum);
+               
             }
             
             end++;
