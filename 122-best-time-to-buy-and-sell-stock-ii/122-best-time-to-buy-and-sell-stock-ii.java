@@ -1,14 +1,41 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        
-        return usingDP(prices);
+        int n = prices.length;
+        return spaceOptimizedDP(prices, n);
+        //return usingDP(prices, n);
         //return solve(prices,0,1);
     }
     
-    //using DP
-    public int usingDP(int[] prices){
+    //space optimized DP
+    public int spaceOptimizedDP(int[] prices, int n){
+         
+         int[] currProfit = new int[2];
+         int[] prevProfit = new int[2];
         
-        int n = prices.length;
+         prevProfit[0] = 0;
+         prevProfit[1] = 0;
+         
+         for(int index = n - 1;index >= 0;index--){
+            for(int buy = 0;buy < 2;buy++){
+                if(buy == 1){
+                     currProfit[buy] = Math.max(-prices[index] +prevProfit[0], 0 + prevProfit[1]);
+                }else{
+                     currProfit[buy] = Math.max(prices[index] + prevProfit[1], 0 + prevProfit[0]);
+                }
+                
+               
+            }
+             
+             prevProfit = currProfit;
+        }
+        
+        return currProfit[1];
+        
+    }
+    //using DP
+    public int usingDP(int[] prices,int n){
+        
+        
         int[][] dp = new int[n + 1][2];
         
         dp[n][0] = 0;
