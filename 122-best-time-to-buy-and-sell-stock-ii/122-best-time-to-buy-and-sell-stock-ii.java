@@ -1,6 +1,13 @@
 class Solution {
     public int maxProfit(int[] prices) {
         
+        return usingDP(prices);
+        //return solve(prices,0,1);
+    }
+    
+    //using DP
+    public int usingDP(int[] prices){
+        
         int n = prices.length;
         int[][] dp = new int[n + 1][2];
         
@@ -17,9 +24,10 @@ class Solution {
             }
         }
         return dp[0][1];
-        //return solve(prices,0,1);
     }
     
+    
+    //recursion
     public int solve(int[] prices,int index, int buy){
         
         if(index == prices.length)return 0;
