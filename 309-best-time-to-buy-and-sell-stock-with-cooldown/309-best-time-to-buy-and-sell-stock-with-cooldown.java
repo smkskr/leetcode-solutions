@@ -1,23 +1,55 @@
 class Solution {
     public int maxProfit(int[] prices) {
         
-        int len = prices.length;
+        int n = prices.length;
+        return usingDP(prices, n);
+        //return solve(prices, 0, 1, 0);
+    }
+    
+    //using dp
+    public int usingDP(int[] prices, int n){
+          
+        int[][][] dp = new int[n+1][2][2];
         
-        int[] stateCoolDown = new int[len];
-        int[] stateBuy = new int[len];
-        int[] stateSell = new int[len];
-        
-        stateCoolDown[0] = 0;
-        stateBuy[0] = - prices[0];//since when you buy a stock your profit decreases
-        stateSell[0] = 0;
-        
-        for(int i = 1;i < len;i++){
-            
-            stateCoolDown[i] = Math.max(stateCoolDown[i - 1], stateSell[i - 1]);
-            stateBuy[i] = Math.max(stateBuy[i - 1], stateCoolDown[i - 1] - prices[i]);
-            stateSell[i] = stateBuy[i - 1] + prices[i];
+        for(int index = n-1;index >= 0;index--){
+            for(int buy = 0;buy < 2;buy++){
+                for(int cooldown = 0;cooldown < 2;cooldown++){
+                        
+                    if(cooldown == 0){
+                        if(buy == 1){
+                            dp[index][buy][cooldown] = Math.max(-prices[index] + dp[index + 1][0][0], dp[index + 1][1][0]);    
+                        }else{
+                            dp[index][buy][cooldown] = Math.max(prices[index] + dp[index + 1][1][1], dp[index + 1][0][0]);
+                        }
+                    }else{
+                        dp[index][buy][cooldown] = dp[index + 1][1][0];
+                    }
+                    
+                }
+            }
         }
         
-        return Math.max(stateCoolDown[len - 1], stateSell[len - 1]);
+        return dp[0][1][0];
+    }
+    
+    //using recursion
+    public int solve(int[] prices, int index, int buy,int cooldown){
+        
+        if(index == prices.length)return 0;
+        
+        int profit = 0;
+        
+        if(cooldown == 0){
+            if(buy == 1){
+                profit = Math.max(-prices[index] + solve(prices, index + 1, 0, 0), 0 + solve(prices, index + 1, 1, 0));    
+            }else{
+                profit = Math.max(prices[index] + solve(prices, index + 1, 1, 1), 0 + solve(prices, index + 1, 0, 0));
+            }
+        }else{
+            profit = solve(prices, index + 1, 1, 0);
+        }
+        
+        return profit;
+        
     }
 }
