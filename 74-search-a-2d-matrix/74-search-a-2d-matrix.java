@@ -4,20 +4,17 @@ class Solution {
         int rows = matrix.length;
         int cols = matrix[0].length;
         
-        int row = 0;
-        int col = cols - 1;
+        int i = 0;
+        int j = cols - 1;
         
-        while(row < rows && (col >= 0 && col < cols)){
+        while(i < rows && j >= 0){
             
-            if(target == matrix[row][col]){
-                return true;
-            }
-            else if(target < matrix[row][col]){
-                col = col - 1;
+            if(matrix[i][j] == target)return true;
+            if(target < matrix[i][j]){
+                j--;
             }else{
-                row = row + 1;
+                i++;
             }
-            
         }
         
         return false;
