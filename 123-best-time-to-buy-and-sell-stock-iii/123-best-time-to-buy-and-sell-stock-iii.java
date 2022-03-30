@@ -24,8 +24,9 @@ class Solution {
                         currProfit[buy][cap] = Math.max(prices[index] + prevProfit[1][cap - 1], 0 + prevProfit[0][cap]);
                     }
                 }
-                prevProfit = currProfit;                
+                              
             }
+            prevProfit = currProfit;  
         }
         
         return currProfit[1][2];
