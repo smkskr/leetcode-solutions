@@ -2,8 +2,27 @@ class Solution {
     public int maxProfit(int[] prices) {
         
         int n = prices.length;
-        return usingDP(prices, n);
+        return usingSpaceOptimizedDP(prices, n);
+        //return usingDP(prices, n);
         //return solve(prices, 0, 1, 2);   
+    }
+    
+    //using space optimized DP
+    public int usingSpaceOptimizedDP(int[] prices, int n){
+        
+        int[][] prevProfit = new int[2][3];
+        int[][] currProfit = new int[2][3];
+        
+        for(int index = n - 1; index >= 0;index--){
+            for(int cap = 1;cap < 3;cap++){
+                currProfit[1][cap] =  Math.max(-prices[index] + prevProfit[0][cap], prevProfit[1][cap]);
+                currProfit[0][cap] =  Math.max(prices[index] + prevProfit[1][cap - 1], prevProfit[0][cap]);
+            }
+            prevProfit = currProfit;
+        }
+        
+        return currProfit[1][2];
+        
     }
     
     //using dp
