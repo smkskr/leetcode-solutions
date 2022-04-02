@@ -58,9 +58,9 @@ class Node{
 class GfG{
     public Node moveZeroes(Node head){
         //Your Code here.
-        Node prev = null;
-        Node nonZeroHead = null;
-        Node zeroPointer = head;
+        Node prev = null;//to keep track of the last non-zero value
+        Node nonZeroHead = null;//to keep track of the non-zero head
+        Node zeroPointer = head;//keeps track of the zero head
         Node curr = head;
         
         
