@@ -31,7 +31,6 @@ class Solution {
               if(count == len2 && len2 < len1)return false;  
             }
             
-            //if(count < len1)return false;
         
         
         return true;
