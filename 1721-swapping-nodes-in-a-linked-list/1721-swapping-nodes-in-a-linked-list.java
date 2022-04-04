@@ -11,10 +11,12 @@
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
         
-        ArrayList<Integer> arr = new ArrayList<>();
-        convertToArray(head, arr);
-        swapValues(arr, k);
-        return convertToList(arr);
+        // ArrayList<Integer> arr = new ArrayList<>();
+        // convertToArray(head, arr);
+        // swapValues(arr, k);
+        // return convertToList(arr);
+        
+        return onePassWithoutExtraSpace(head, k);
 
     }
     
@@ -49,5 +51,36 @@ class Solution {
         
        return dummyHead.next;
         
+    }
+    
+    //using only one pass without extra space
+    public ListNode onePassWithoutExtraSpace(ListNode head, int k){
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode first = head;
+        ListNode second = head;
+        
+        for(int i = 1;i < k;i++){
+            fast = fast.next;
+        }
+        
+        //save k-th node from beginning
+        first = fast;
+        
+        while(fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        
+        //save k-th node from end
+        second = slow;
+        
+        //swap values
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+        
+        return head;
     }
 }
