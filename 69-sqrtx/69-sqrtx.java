@@ -5,8 +5,10 @@ class Solution {
         
         int right = x / 2;
         int left = 1;
+        
         while (left <= right) {
             int mid = (right + left) / 2;
+            
             if ((long)mid*mid > x) {
                 right = mid - 1;
             } else {
@@ -14,5 +16,7 @@ class Solution {
             }
         }
         return right;
+        
+        
     }
 }
