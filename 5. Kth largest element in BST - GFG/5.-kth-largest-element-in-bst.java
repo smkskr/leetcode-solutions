@@ -123,18 +123,18 @@ class Solution
         res[0] = -1;
         int[] count = new int[1];
         count[0] = 1;
-        inorderTraversal(root, K, count, res);
+        solve(root, K, count, res);
         return res[0];
     }
     
-    public void inorderTraversal(Node root, int K, int[] count,int[] res){
+    public void solve(Node root, int K, int[] count,int[] res){
         
         if(root == null)return;
-        inorderTraversal(root.right, K, count, res);
+        solve(root.right, K, count, res);
         if(count[0]++ == K) {
             res[0] = root.data;return;
         }
-        inorderTraversal(root.left, K, count, res);
+        solve(root.left, K, count, res);
         
     }
 }
