@@ -116,15 +116,20 @@ class Tree
     public static float findMedian(Node root)
     {
         // code here.
-        ArrayList<Integer> list = new ArrayList<>();
         
-        inorderTraversal(root, list);
-        int len = list.size();
-        if(len%2 == 0)return (float)(list.get(len/2) + list.get(len/2 - 1))/2;
-        return list.get(len/2);
+        // UNCOMMENT THE BELOW LINES FOR TRIVIAL SOLUTION
+        
+        // ArrayList<Integer> list = new ArrayList<>();
+        // inorderTraversal(root, list);
+        // int len = list.size();
+        // if(len%2 == 0)return (float)(list.get(len/2) + list.get(len/2 - 1))/2;
+        // return list.get(len/2);
+        
+        return calcMedian(root);
         
     }
     
+    //trivial solution
     public static void inorderTraversal(Node root, ArrayList<Integer> list){
         
         if(root == null)return;
@@ -133,6 +138,47 @@ class Tree
         list.add(root.data);
         inorderTraversal(root.right, list);
     }
+    
+    public static int countNodes(Node root){
+        
+        if(root == null)return 0;
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+    
+    public static float calcMedian(Node root){
+        
+        int count = countNodes(root);
+        int[] target = new int[1]; target[0] = 1;
+        if(count%2 == 0){
+            int[] mid1 = new int[1];
+            int[] mid2 = new int[1];
+            
+            solve(root, target, count/2, mid1);
+            target[0] = 1;
+            solve(root, target, count/2 + 1, mid2);
+            return (float)(mid1[0] + mid2[0])/2;
+        }else{
+            int[] mid = new int[1];
+            solve(root,target, count/2 + 1, mid);
+            return mid[0];
+        }
+    }
+    
+
+    
+    public static void solve(Node root, int[] target,int numOfNodes, int[] mid){
+        
+        if(root == null)return;
+        
+        solve(root.left, target, numOfNodes, mid);
+        if(target[0]++ == numOfNodes){
+            mid[0] = root.data;return;
+        }
+        solve(root.right,target, numOfNodes, mid);
+        
+    } 
+    
+    
     
     
 }
