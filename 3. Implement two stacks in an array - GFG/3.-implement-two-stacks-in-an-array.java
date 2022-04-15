@@ -83,9 +83,8 @@ class Stacks
     void push1(int x, TwoStack sq)
     {   
         int top1 = sq.top1;
-        //int top2 = sq.top2;
         top1++;
-        if(top1 < (sq.size)/2 - 1){
+        if(top1 < sq.top2 - 1){
             sq.arr[top1] = x;
             sq.top1 = top1;
         }
@@ -97,7 +96,7 @@ class Stacks
     {
          int top2 = sq.top2;
          top2--;
-        if(top2 > sq.size/2){
+        if(top2 > sq.top1 + 1){
             sq.arr[top2] = x;
             sq.top2 = top2;
         }
