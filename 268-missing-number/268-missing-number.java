@@ -22,6 +22,9 @@ class Solution {
         
         //CASE 2 : when missing number is outside of bounds
         return n;
+        
+        //Another approach to solve this problem
+        //return usingXor(nums);
     }
     
     public void swap(int[] nums, int first, int second){
@@ -29,4 +32,20 @@ class Solution {
         nums[first] = nums[second];
         nums[second] = temp;
     }
+    
+    public int usingXor(int[] nums){
+        
+        int n = nums.length;
+        int xor = 0;
+        for(int i = 1;i <= n;i++){
+            xor = xor ^ i;
+        }
+        
+        for(int i = 0;i < n;i++){
+            xor = xor ^ nums[i];
+        }
+        
+        return xor;
+    }
+    
 }
