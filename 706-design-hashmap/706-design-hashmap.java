@@ -1,23 +1,23 @@
 class MyHashMap {
     
-   int[] keyValue;
+    int size = 1000001;
+    int[] arr;
     
     public MyHashMap() {
-        keyValue = new int[1000001];//defining size of array as 1000001 since constraint of key in the description is given as 0 <= key <= 1000000
-        Arrays.fill(keyValue, -1);
+        arr = new int[size];
+        Arrays.fill(arr, -1);
     }
     
     public void put(int key, int value) {
-       keyValue[key] = value;
+        arr[key] = value;
     }
     
     public int get(int key) {
-        return keyValue[key];
-        
+        return arr[key];
     }
     
     public void remove(int key) {
-        keyValue[key] = -1;
+        arr[key] = -1;
     }
 }
 
