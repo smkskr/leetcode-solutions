@@ -67,60 +67,42 @@ class Solution
         while(index1 < len1 && index2 < len2){
             
             if(arr1[index1] < arr2[index2]){
-                int lastIndex = result.size() - 1;
-                if(lastIndex >= 0 && result.get(lastIndex) != arr1[index1]){
-                    result.add(arr1[index1]);
-                }else if(lastIndex == -1){
-                   result.add(arr1[index1]);
-                }
+                addDistinctElements(result, arr1, index1);
                 index1++;
             }
              else if(arr2[index2] < arr1[index1]){
-                int lastIndex = result.size() - 1;
-                if(lastIndex >= 0 && result.get(lastIndex) != arr2[index2]){
-                    result.add(arr2[index2]);
-                }else if(lastIndex == -1){
-                   result.add(arr2[index2]);
-                }
+                addDistinctElements(result, arr2, index2);
                 index2++;
             }else{
-                int lastIndex = result.size() - 1;
-                if(lastIndex >= 0 && result.get(lastIndex) != arr2[index2]){
-                    result.add(arr2[index2]);
-                }else if(lastIndex == -1){
-                   result.add(arr2[index2]);
-                }
+                addDistinctElements(result, arr2, index2);
                 index1++;index2++;
             }
-            // set.add(arr1[index1++]);
-            // set.add(arr2[index2++]);
+          
         }
         
         while(index1 < len1){
-            int lastIndex = result.size() - 1;
-                if(lastIndex >= 0 && result.get(lastIndex) != arr1[index1]){
-                    result.add(arr1[index1]);
-                }else if(lastIndex == -1){
-                   result.add(arr1[index1]);
-                }
-                index1++;
+            addDistinctElements(result, arr1, index1);
+            index1++;
         }
         
         while(index2 < len2){
-            int lastIndex = result.size() - 1;
-                if(lastIndex >= 0 && result.get(lastIndex) != arr2[index2]){
-                    result.add(arr2[index2]);
-                }else if(lastIndex == -1){
-                   result.add(arr2[index2]);
-                }
-                index2++;
+           addDistinctElements(result, arr2, index2);
+           index2++;
         }
         
-        // for(int val : set){
-        //     result.add(val);
-        // }
+        
         
         return result;
+    }
+    
+    public static void addDistinctElements(ArrayList<Integer> result, int[] array, int index){
+        
+                int lastIndex = result.size() - 1;
+                if(lastIndex >= 0 && result.get(lastIndex) != array[index]){
+                    result.add(array[index]);
+                }else if(lastIndex == -1){
+                   result.add(array[index]);
+                }
     }
 }
 
