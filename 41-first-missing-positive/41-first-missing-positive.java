@@ -22,10 +22,11 @@ class Solution {
         
         //if index value reaches to the last index of the array
         //then the first missing value is 1 + length of the array
-        if(index == n)return 1 + n;
+        // if(index == n)
+            return 1 + n;
         
         
-        return n;
+        // return n;
     }
     
     public void swap(int[] nums, int first, int second){
