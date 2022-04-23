@@ -32,11 +32,13 @@ class GFG{
 
 class ValIndex{
     int val;
-    int index;
+    int row;
+    int col;
     
-    ValIndex(int _val, int _index){
+    ValIndex(int _val, int _row, int _col){
         val = _val;
-        index = _index;
+        row = _row;
+        col = _col;
     }
 }
 class Solution
@@ -45,25 +47,22 @@ class Solution
     public static ArrayList<Integer> mergeKArrays(int[][] arr,int K) 
     {
         // Write your code here.
-        // PriorityQueue<ValIndex> minHeap = new PriorityQueue<>((a,b) -> Integer.compare(a.val,b.val));
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        
+        PriorityQueue<ValIndex> minHeap = new PriorityQueue<>((a,b) -> Integer.compare(a.val,b.val));
+       
         //extract first elements of all arrays and insert into min heap
-        // for(int i = 0;i < k;i++){
-        //     ValIndex valIndex = new ValIndex(arr[i][0], 0);
-        //     minHeap.offer(valIndex);
-        // }
-        
-        for(int i = 0; i < K;i++){
-            for(int j = 0; j < K;j++){
-                minHeap.offer(arr[i][j]);
-            }
+        for(int i = 0;i < K;i++){
+            ValIndex valIndex = new ValIndex(arr[i][0], i, 0);
+            minHeap.offer(valIndex);
         }
-        
         
         ArrayList<Integer> result = new ArrayList<>();
         while(!minHeap.isEmpty()){
-            result.add(minHeap.poll());
+            ValIndex valIndex = minHeap.poll();
+            result.add(valIndex.val);
+            int row = valIndex.row;
+            int col = valIndex.col;
+            if(col + 1 < K)
+            minHeap.offer(new ValIndex(arr[row][col+1], row, col+1));
         }
         
         return result;
