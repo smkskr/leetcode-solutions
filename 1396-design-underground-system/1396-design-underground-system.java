@@ -1,13 +1,11 @@
 class UndergroundSystem {
     
     Map<Integer, TripDetails> checkInMap;
-    //Map<Integer, TripDetails> checkOutMap;
     Map<String, TripCount> tripTimeMap;
     
     public UndergroundSystem() {
         
         checkInMap = new HashMap<>();
-        //checkOutMap = new HashMap<>();
         tripTimeMap = new HashMap<>();
         
     }
@@ -17,8 +15,7 @@ class UndergroundSystem {
     }
     
     public void checkOut(int id, String stationName, int t) {
-       // checkOutMap.put(id, new TripDetails(stationName,t));
-        
+      
         TripDetails sourceTrip = checkInMap.get(id);
         String source = sourceTrip.stationName;
         int time = sourceTrip.time;
