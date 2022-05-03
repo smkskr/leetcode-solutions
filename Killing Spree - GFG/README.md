@@ -1,5 +1,5 @@
 # Killing Spree
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">There are Infinite People Standing in a row, indexed from 1.<br>
 A person having index 'i' has&nbsp;strength of (i*i).<br>
