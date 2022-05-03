@@ -33,17 +33,27 @@ class Solution{
     long killinSpree(long n)
     {
         // Code Here
-        long sum = 0;
-        long i = 1;
-        int count = 0;
-        while((i*i) <= n){
+        long low = 1;
+        long high = (long)Math.sqrt(n) + 1;
+        long ans = 0;
+        while(low <= high){
             
-            n = n - (i*i);
-            sum += i*i;
-            i++;
-            count++;
+            long mid = low + (high - low)/2;
+            long value = sumOfSquaresOfNaturalNumbers(mid);
+            if(value <= n){
+                ans = mid;
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
         }
+      
         
-        return count;
+        return ans;
+    }
+    
+    long sumOfSquaresOfNaturalNumbers(long n){
+        
+        return (n*(n + 1)*(2*n + 1))/6;
     }
 }
