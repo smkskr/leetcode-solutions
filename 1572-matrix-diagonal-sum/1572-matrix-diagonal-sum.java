@@ -5,16 +5,11 @@ class Solution {
         int cols = mat[0].length;
         int sum = 0;
         
-        //primary diagonal
-        for(int row = 0;row < rows;row++){
-            sum += mat[row][row];
-            sum += mat[row][rows - row - 1];
-        }
         
-        //secondary diagonal
-        // for(int row = rows - 1;row >= 0;row--){
-        //     sum += mat[row][row];    
-        // }
+        for(int row = 0;row < rows;row++){
+            sum += mat[row][row];//primary diagonal
+            sum += mat[row][rows - row - 1];//secondary diagonal
+        }
         
         if(rows%2 == 1){
             sum = sum - mat[rows/2][rows/2];
