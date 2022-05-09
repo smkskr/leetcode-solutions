@@ -7,6 +7,7 @@ class Solution {
         int rows = matrix.length;
         int cols = matrix[0].length;
         
+        //calculate minimum element of each row and put them into set
         for(int row = 0;row < rows;row++){
             int min = matrix[row][0];
             for(int col = 1;col < cols;col++){
@@ -15,6 +16,7 @@ class Solution {
             set.add(min);
         }
         
+        //calculate maximum element of each column and check whether it is present in set or not
         for(int col = 0;col < cols;col++){
             int max = matrix[0][col];
             for(int row = 1;row < rows;row++){
