@@ -35,8 +35,6 @@ class DoubleListNode{
 class Solution
 {   
     HashMap<Character, DoubleListNode> dlMap = new HashMap<>();
-    // List<Character> dLL = new ArrayList<>();
-    //HashMap<Character, Boolean> repeatMap = new HashMap<>();
     boolean[] repeatMap = new boolean[26];
     DoubleListNode head = null;
     DoubleListNode tail = null;
