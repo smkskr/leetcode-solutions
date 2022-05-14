@@ -84,18 +84,6 @@ class LRUCache {
         }else{
             tail = node.prev;
         }
-        // if(node == tail){
-        //     node.prev.next = node.next;
-        //     tail = node.prev;
-        // }
-        // else if(node == head){
-        //     head = node.next;
-        //     head.prev = null;
-        //     node.next = null;
-        // }else{
-        //      node.prev.next = node.next;
-        //      node.next.prev = node.prev;
-        // }
        
     }
     
