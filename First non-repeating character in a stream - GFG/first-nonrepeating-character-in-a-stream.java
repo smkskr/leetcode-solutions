@@ -63,8 +63,7 @@ class Solution
                 res += head == null ?  "#" : head.ch;continue;
             }
             
-            if(head == null)res += "#";
-            else res += head.ch;
+             res += head == null ?  "#" : head.ch;
             
         }
         
