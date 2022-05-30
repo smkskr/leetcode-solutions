@@ -33,7 +33,7 @@ class GFG {
 class Solution {
     static int maxBinTreeGCD(ArrayList<ArrayList<Integer>> arr, int N) {
         // code here
-        Collections.sort(arr, (a,b) -> a.get(1) - b.get(1));
+        Collections.sort(arr, (a,b) -> a.get(0) - b.get(0));
         int maxGCD = 0;
         for(int index = 0;index < arr.size() - 1;){
             ArrayList<Integer> first = arr.get(index);
