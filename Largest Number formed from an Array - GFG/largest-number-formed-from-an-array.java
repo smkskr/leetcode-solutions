@@ -35,7 +35,7 @@ class Solution {
               
               String ab = a + b;
               String ba = b + a;
-              return ab.compareTo(ba) > 0 ? -1 : 1;
+              return ba.compareTo(ab) > 0 ? 1 : -1;
           }
         });
         
