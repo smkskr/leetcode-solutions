@@ -34,23 +34,26 @@ class Solution
     public static long[] nextLargerElement(long[] arr, int n)
     { 
         // Your code here
-        //store indexes of next greater element
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<>();//store indices
         long[] result = new long[n];
-        stack.push(0);
-        for(int i = 1;i < n;i++){
+        result[n - 1] = -1;
+        int greaterElemIndex = 0;
+        stack.push(0);//store first index
+        for(int index = 1;index < n;index++){
             
-            //popping out elements if the current array element is greater than the top of stack element
-            while(!stack.isEmpty() && arr[i] > arr[stack.peek()]){
-                result[stack.pop()] = arr[i];
+            while(!stack.isEmpty() && arr[index] > arr[stack.peek()]){
+                result[stack.pop()] = arr[index];
             }
-            stack.push(i);
+            stack.push(index);
         }
         
-        //if any elements are left in stack that means they have no next greater element
+        
         while(!stack.isEmpty()){
             result[stack.pop()] = -1;
         }
-            return result;        
-        }
+        
+        return result;
     } 
+    
+    
+}
