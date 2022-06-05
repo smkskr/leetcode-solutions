@@ -1,5 +1,5 @@
 # Next Greater Element
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array <strong>arr[ ]</strong> of size <strong>N</strong> having distinct elements, the&nbsp;task is to find the next greater element for each element of the array in order of their appearance in the array.<br>
 Next greater element of an element in the array is the nearest element on the right which is greater than the current element.<br>
@@ -34,7 +34,7 @@ element on right and hence -1.</span></pre>
 This is a <strong>function </strong>problem. You only need to complete the function <strong>nextLargerElement()&nbsp;</strong>that takes list of integers&nbsp;<strong>arr[ ] </strong>and<strong>&nbsp;N</strong>&nbsp;as input parameters<strong> </strong>and returns list of integers&nbsp;of length N&nbsp;denoting the next greater elements for all the corresponding elements in the input array.</span></p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity</strong> : O(N)<br>
-<strong>Expected Auxilliary Space</strong> : O(N)</span></p>
+<strong>Expected Auxiliary Space</strong> : O(N)</span></p>
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤&nbsp;10<sup>6</sup><br>
