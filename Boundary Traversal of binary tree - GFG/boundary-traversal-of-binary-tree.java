@@ -106,62 +106,56 @@ class GFG
 //     } 
 // }
 
-/* Steps to traverse boundary nodes of a binary tree
-*  
-* 1. Traverse all left boundary nodes except leaf nodes
-* 2. Traverse all leaf nodes
-* 3. Traverse all right boundary nodes except leaf nodes
-*
-*/
 class Solution
 {
 	ArrayList <Integer> boundary(Node node)
 	{   
-	    ArrayList<Integer> result = new ArrayList<>();
-	    if(node == null)return result;
-	    result.add(node.data);
-	    if(node.left == null && node.right == null)return result;
-	    traverseLeftNodes(node.left, result);//left boundary nodes only
-	    traverseLeafNodes(node, result);//leaf nodes only
-	    traverseRightNodes(node.right, result);//right boundary nodes only
 	    
-	    return result;
+	    ArrayList<Integer> boundaryNodes = new ArrayList<>();
+	    if(node == null)return boundaryNodes;
+	    boundaryNodes.add(node.data);
+	    if(node.left == null && node.right == null)return boundaryNodes;
+	    //traverse leftNodes
+	    traverseLeftNodes(node.left, boundaryNodes);
+	    //traverse LeafNodes
+	    traverseLeafNodes(node, boundaryNodes);
+	    //traverse rightNodes
+	    traverseRightNodes(node.right, boundaryNodes);
+	    return boundaryNodes;
 	}
 	
-	//traverse only left nodes except leaf nodes
-	public void traverseLeftNodes(Node root, ArrayList<Integer> result){
-	    
-	    if(root == null)return;
-	    if(root.left == null && root.right == null)return;
-	    
-	    result.add(root.data);
-	    if(root.left == null){
-	        traverseLeftNodes(root.right,result);
-	    }
-	    traverseLeftNodes(root.left,result);
-	}
-	
-	
-	//traverse only leaf Nodes
-	public void traverseLeafNodes(Node node, ArrayList<Integer> result){
-	    
-	    if(node == null)return;
-	    if(node.left == null && node.right == null)result.add(node.data);
-	    
-	    traverseLeafNodes(node.left,result);
-	    traverseLeafNodes(node.right,result);
-	}
-	
-	//traverse only right boundary nodes except leaf nodes
-	public void traverseRightNodes(Node node, ArrayList<Integer> result){
+	public void traverseLeftNodes(Node node, ArrayList<Integer> boundaryNodes){
 	    
 	    if(node == null)return;
 	    if(node.left == null && node.right == null)return;
 	    
-	    if(node.right == null){
-	        traverseRightNodes(node.left,result);
+	    boundaryNodes.add(node.data);
+	    if(node.left == null){
+	        traverseLeftNodes(node.right, boundaryNodes);
 	    }
-	    traverseRightNodes(node.right,result);
-	    result.add(node.data);
+	    traverseLeftNodes(node.left, boundaryNodes);
+	}
+	
+	public void traverseLeafNodes(Node node, ArrayList<Integer> boundaryNodes){
+	    
+	    if(node == null)return;
+	    if(node.left == null && node.right == null)boundaryNodes.add(node.data);
+	    
+	    traverseLeafNodes(node.left, boundaryNodes);
+	    traverseLeafNodes(node.right, boundaryNodes);
+	    
+	}
+	
+	public void traverseRightNodes(Node node, ArrayList<Integer> boundaryNodes){
+	    
+	    if(node == null)return;
+	    if(node.left == null && node.right == null)return;
+	    
+	   
+	    if(node.right == null){
+	        traverseRightNodes(node.left, boundaryNodes);
+	    }
+	    traverseRightNodes(node.right, boundaryNodes);
+	    boundaryNodes.add(node.data);
 	}
 }
