@@ -26,7 +26,7 @@ class Solution {
         
         if(root == null)return 0;
         
-        int leftSubTreeSum = Math.max(0, maxPathSumUtil(root.left, maxSum));
+        int leftSubTreeSum =  Math.max(0, maxPathSumUtil(root.left, maxSum));
         int rightSubTreeSum = Math.max(0, maxPathSumUtil(root.right, maxSum));
         
         maxSum[0] = Math.max(maxSum[0], root.val + leftSubTreeSum + rightSubTreeSum);
