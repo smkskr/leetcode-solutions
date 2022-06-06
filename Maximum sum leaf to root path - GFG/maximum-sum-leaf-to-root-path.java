@@ -116,7 +116,6 @@ class Solution
     {
         //code here
         int[] maxSum = new int[1];
-        maxSum[0] = Integer.MIN_VALUE;
         maxPathSumUtil(root, 0, maxSum);
         return maxSum[0];
     }
