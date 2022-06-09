@@ -1,12 +1,9 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         
-        int first = binarySearchFirstPosition(nums, target);
-        int last = binarySearchLastPosition(nums, target);
-        
         int[] result = new int[2];
-        result[0] = first;
-        result[1] = last;
+        result[0] = binarySearchFirstPosition(nums, target);
+        result[1] = binarySearchLastPosition(nums, target);
         
         return result;
     }
