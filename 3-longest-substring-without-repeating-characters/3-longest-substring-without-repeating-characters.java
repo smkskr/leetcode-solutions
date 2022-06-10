@@ -14,9 +14,9 @@ class Solution {
             char ch = s.charAt(end++);
             charCountMap.put(ch, charCountMap.getOrDefault(ch,0) + 1);
             
-            if(charCountMap.get(ch) == 1){
-                maxLen = Math.max(maxLen, end - start);
-            }
+//             if(charCountMap.get(ch) == 1){
+                
+//             }
             
             while(charCountMap.get(ch) > 1){
                
@@ -24,6 +24,7 @@ class Solution {
                 charCountMap.put(startChar, charCountMap.get(startChar) - 1);
                 
             }
+            maxLen = Math.max(maxLen, end - start);
             
         }
         
