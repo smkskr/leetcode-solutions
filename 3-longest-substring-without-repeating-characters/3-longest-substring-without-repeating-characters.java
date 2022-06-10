@@ -14,10 +14,6 @@ class Solution {
             char ch = s.charAt(end++);
             charCountMap.put(ch, charCountMap.getOrDefault(ch,0) + 1);
             
-//             if(charCountMap.get(ch) == 1){
-                
-//             }
-            
             while(charCountMap.get(ch) > 1){
                
                 char startChar = s.charAt(start++); 
