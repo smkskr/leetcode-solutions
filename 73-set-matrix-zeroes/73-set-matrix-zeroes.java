@@ -10,9 +10,11 @@ class Pair{
 class Solution {
     public void setZeroes(int[][] matrix) {
         
-       doProcessWithExtraSpace(matrix);
+       //doProcessWithExtraSpace(matrix);
+        doProcessWithConstantSpace(matrix);
     }
     
+    //Method with Extra Space Complexity
     public void doProcessWithExtraSpace(int[][] matrix){
         
         //queue to store indices of matrix having value zero
@@ -53,7 +55,49 @@ class Solution {
         }
     }
     
+    //method with constant space Complexity
     public void doProcessWithConstantSpace(int[][] matrix){
+        
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        boolean isFirstCol = false;//
+        
+       
+        for(int row = 0;row < rows;row++){
+            
+            //check for first cell of the first col is zero or not 
+            if(matrix[row][0] == 0){
+                isFirstCol = true;
+            }
+            for(int col = 1;col < cols;col++){
+                if(matrix[row][col] == 0){
+                    matrix[row][0] = 0;//set first cell of the row to be zero
+                    matrix[0][col] = 0;//set first cell of the col to be zero
+                }
+            }
+        }
+        
+        for(int row = 1;row < rows;row++){
+            for(int col = 1;col < cols;col++){
+                if(matrix[row][0] == 0 || matrix[0][col] == 0){
+                    matrix[row][col] = 0;
+                }
+            }
+        }
+        
+        //set first row zero
+        if(matrix[0][0] == 0){
+            for(int col = 0;col < cols;col++){
+                matrix[0][col] = 0;
+            }
+        }
+        
+        //set first col zero
+        if(isFirstCol){
+            for(int row = 0;row < rows;row++){
+                matrix[row][0] = 0;
+            }
+        }
         
         
     }
