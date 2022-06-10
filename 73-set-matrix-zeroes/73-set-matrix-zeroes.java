@@ -10,6 +10,12 @@ class Pair{
 class Solution {
     public void setZeroes(int[][] matrix) {
         
+       doProcessWithExtraSpace(matrix);
+    }
+    
+    public void doProcessWithExtraSpace(int[][] matrix){
+        
+        //queue to store indices of matrix having value zero
         Queue<Pair> queue = new LinkedList<>();
         
         int rows = matrix.length;
@@ -45,5 +51,10 @@ class Solution {
         for(int r = 0;r < matrix.length;r++){
                 matrix[r][col] = 0;
         }
+    }
+    
+    public void doProcessWithConstantSpace(int[][] matrix){
+        
+        
     }
 }
