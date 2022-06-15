@@ -1,39 +1,32 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         
-        int[] charCountMap = new int[26];
-        List<Integer> list = new ArrayList<>();
-
-        for(char ch : p.toCharArray()){
-            charCountMap[ch - 'a']++;
-        }
-        
         int start = 0;
         int end = 0;
-        int lengthOfMainString = s.length();
-        int windowSize = p.length();
+        int lengthS = s.length();
+        int lengthP = p.length();
         
-        int count = 0;
+        HashMap<Character, Integer> countMap = new HashMap<>();
+        int countP = 0;
+        List<Integer> list = new ArrayList<>();
         
-        while(end < lengthOfMainString){
+        for(char ch : p.toCharArray()){
+            countMap.put(ch, countMap.getOrDefault(ch, 0) + 1);    
+        }
+        
+        while(end < lengthS){
             
             char ch = s.charAt(end);
-            charCountMap[ch - 'a']--;
-            if(charCountMap[ch - 'a'] >= 0)count++;
+            countMap.put(ch, countMap.getOrDefault(ch, 0) - 1);
+            if(countMap.get(ch) >= 0)countP++;
             
-
-            
-            if(end - start + 1 == windowSize){
+            if(end - start + 1 == lengthP){
                 
-                if(count == windowSize)list.add(start);
-                char firstCharacter = s.charAt(start);
-                if(charCountMap[firstCharacter - 'a']++ >= 0){
-                    count--;
-                }
-                
-                start++;
+                if(countP == lengthP)list.add(start);
+                char firstChar = s.charAt(start++);
+                countMap.put(firstChar, countMap.get(firstChar) + 1);
+                if(countMap.get(firstChar) >= 1)countP--;
             }
-            
             end++;
         }
         
