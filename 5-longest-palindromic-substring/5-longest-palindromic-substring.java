@@ -1,8 +1,8 @@
 class Solution {
     public String longestPalindrome(String s) {
         
-        //return solvingUsingDP(s);//solving using DP similar to Palindrome Partitioning :: TC -> n^2 : SC -> n^2
-        return solvingExpandingAroundCenter(s);//solving expanding around center :: TC -> n^2 : SC -> constant
+        return solvingUsingDP(s);//solving using DP similar to Palindrome Partitioning :: TC -> n^2 : SC -> n^2
+        //return solvingExpandingAroundCenter(s);//solving expanding around center :: TC -> n^2 : SC -> constant
     }
     
     
