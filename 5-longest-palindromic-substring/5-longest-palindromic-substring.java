@@ -1,6 +1,13 @@
 class Solution {
     public String longestPalindrome(String s) {
         
+        //return solvingUsingDP(s);//solving using DP similar to Palindrome Partitioning :: TC -> n^2 : SC -> n^2
+        return solvingExpandingAroundCenter(s);//solving expanding around center :: TC -> n^2 : SC -> constant
+    }
+    
+    
+    //solving using DP approach
+    public String solvingUsingDP(String s){
         int len = s.length();
         int start = 0;
         int end = 0;
@@ -31,5 +38,35 @@ class Solution {
         }
         
         return s.substring(start, end + 1);
+    }
+    
+    //solving using expanding around center
+    public String solvingExpandingAroundCenter(String s){
+        
+        int length = s.length();
+        String[] resultString = new String[1];resultString[0] = "";
+        for(int index = 0;index < length;index++){
+            expandAroundCenterUtil(s, index, index, resultString);//for odd length palindromes
+            expandAroundCenterUtil(s, index, index + 1, resultString);//for even length palidromes
+        }
+        
+        return resultString[0];
+        
+    }
+    
+    public void expandAroundCenterUtil(String s, int left, int right, String[] resultString){
+        
+        String res = "";
+        int resLen = 0;
+        while((left >= 0 && right < s.length()) && s.charAt(left) == s.charAt(right)){
+            if((right - left + 1) > resLen){
+                res = s.substring(left, right + 1);
+                resLen = right - left + 1;
+            }
+            left--;
+            right++;
+        }
+        
+        resultString[0] = resultString[0].length() > res.length() ? resultString[0] : res;
     }
 }
