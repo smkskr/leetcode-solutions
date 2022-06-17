@@ -70,6 +70,5 @@ class Solution {
         }
         
         return res;
-       // resultString[0] = resultString[0].length() > res.length() ? resultString[0] : res;
     }
 }
