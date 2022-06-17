@@ -44,17 +44,19 @@ class Solution {
     public String solvingExpandingAroundCenter(String s){
         
         int length = s.length();
-        String[] resultString = new String[1];resultString[0] = "";
+        String longestPalindromeString = "";
         for(int index = 0;index < length;index++){
-            expandAroundCenterUtil(s, index, index, resultString);//for odd length palindromes
-            expandAroundCenterUtil(s, index, index + 1, resultString);//for even length palidromes
+            String oddLengthPalindrome = expandAroundCenterUtil(s, index, index);//for odd length palindromes
+            String evenLengthPalindrome = expandAroundCenterUtil(s, index, index + 1);//for even length palidromes
+            String intermediateLongestString = oddLengthPalindrome.length() > evenLengthPalindrome.length() ? oddLengthPalindrome : evenLengthPalindrome;
+            longestPalindromeString = longestPalindromeString.length() > intermediateLongestString.length() ? longestPalindromeString : intermediateLongestString;
         }
         
-        return resultString[0];
+        return longestPalindromeString;
         
     }
     
-    public void expandAroundCenterUtil(String s, int left, int right, String[] resultString){
+    public String expandAroundCenterUtil(String s, int left, int right){
         
         String res = "";
         int resLen = 0;
@@ -67,6 +69,7 @@ class Solution {
             right++;
         }
         
-        resultString[0] = resultString[0].length() > res.length() ? resultString[0] : res;
+        return res;
+       // resultString[0] = resultString[0].length() > res.length() ? resultString[0] : res;
     }
 }
