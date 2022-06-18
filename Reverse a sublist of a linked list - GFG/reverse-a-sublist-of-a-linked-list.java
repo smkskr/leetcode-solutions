@@ -119,8 +119,8 @@ class Solution
         
         Node prev = null;
         Node curr = start;
-        Node stop = destination.next;
-        while(curr != stop){
+        Node stopNode = destination.next;
+        while(curr != stopNode){
             
             Node next = curr.next;
             curr.next = prev;
@@ -128,11 +128,6 @@ class Solution
             curr = next;
             
         }
-        
-        //revers
-        // Node next = curr.next;
-        // curr.next = prev;
-        // curr = next;
         
         return curr;
 
