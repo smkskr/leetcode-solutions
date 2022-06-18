@@ -102,16 +102,16 @@ class Solution
             head = head.next;
         }
         
-        Node nodeAfterDestination = reverseList(start, destination);
+        Node listAfterDestination = reverseList(start, destination);
         
        
         while(temp.next != start){
             temp = temp.next;
         }
         
-        temp.next = destination;
+        temp.next = destination;//since destination is the new head of the reversedList
        
-        start.next = nodeAfterDestination;
+        start.next = listAfterDestination;
         return dummyHead.next;
     }
     
