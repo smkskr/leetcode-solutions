@@ -86,7 +86,7 @@ class Solution
     {
         //code here
         if(head == null)return null;
-        Node dummyHead = new Node(0);
+       
         Node temp = head;
         Node start = null;
         Node prev = null;
@@ -95,7 +95,6 @@ class Solution
         while(temp != null){
             
             if(count == m){
-               
                 start = temp;break;
             }
             count++;
@@ -127,7 +126,7 @@ class Solution
             
         }
         
-        start.next = curr;
+        start.next = curr;//point the reversed list tail to the remaining nodes
         return prev;
 
     }
