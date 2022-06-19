@@ -87,41 +87,39 @@ class Solution
         //code here
         if(head == null)return null;
         Node dummyHead = new Node(0);
-        Node temp = dummyHead;
-        temp.next = head;
+        Node temp = head;
         Node start = null;
-        Node destination = null;
+        Node prev = null;
         int count = 1;
         
-        while(head != null && count <= n){
+        while(temp != null){
             
-            if(count == m)start = head;
-            if(count == n)destination = head;
-            
+            if(count == m){
+               
+                start = temp;break;
+            }
             count++;
-            head = head.next;
-        }
-        
-        Node listAfterDestination = reverseList(start, destination);
-        
-       
-        while(temp.next != start){
+            prev = temp;
             temp = temp.next;
         }
         
-        temp.next = destination;//since destination is the new head of the reversedList
        
-        start.next = listAfterDestination;
-        return dummyHead.next;
+        Node reversedList = reverseList(start, count, n);
+        
+        if(prev != null)prev.next = reversedList;
+        else return reversedList;
+        
+        return head;
     }
     
-    public static Node reverseList(Node start, Node destination){
+    public static Node reverseList(Node start, int count, int n){
         
+       
         Node prev = null;
         Node curr = start;
-        Node stopNode = destination.next;
-        while(curr != stopNode){
+        while(count <= n){
             
+            count++;
             Node next = curr.next;
             curr.next = prev;
             prev = curr;
@@ -129,8 +127,8 @@ class Solution
             
         }
         
-        return curr;
-
+        start.next = curr;
+        return prev;
 
     }
 }
