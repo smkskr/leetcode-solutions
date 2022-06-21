@@ -150,16 +150,11 @@ class Solution{
         NodeValue left = largestBSTUtil(root.left);
         NodeValue right = largestBSTUtil(root.right);
         
-        NodeValue returnValue = new NodeValue();
-        
         if((left.isBST && right.isBST) && left.max < root.data && root.data < right.min){
-           
- 
-            returnValue.max = Math.max(Math.max(left.max, right.max),root.data);
-            returnValue.min = Math.min(Math.min(left.min, right.min),root.data);
-            returnValue.size = 1 + left.size + right.size;
-            returnValue.isBST = true;
-            return returnValue;
+            int max = Math.max(Math.max(left.max, right.max),root.data);
+            int min = Math.min(Math.min(left.min, right.min),root.data);
+            int size = 1 + left.size + right.size;
+            return new NodeValue(true, max, min, size);
         }
         
         return new NodeValue(false, Integer.MAX_VALUE, Integer.MIN_VALUE, Math.max(left.size, right.size));
