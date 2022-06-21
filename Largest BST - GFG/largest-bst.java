@@ -112,15 +112,13 @@ class GFG
 
 class NodeValue{
     
-    boolean isBST;
     int max;
     int min;
     int size;
     
     NodeValue(){}
     
-    NodeValue(boolean _isBST, int _max, int _min, int _size){
-        isBST = _isBST;
+    NodeValue(int _max, int _min, int _size){
         max = _max;
         min = _min;
         size = _size;
@@ -140,24 +138,24 @@ class Solution{
     static NodeValue largestBSTUtil(Node root){
         
         if(root == null){
-            return new NodeValue(true, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
+            return new NodeValue(Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
         }
         
         if(root.left == null && root.right == null){
-            return new NodeValue(true, root.data, root.data, 1);
+            return new NodeValue(root.data, root.data, 1);
         }
         
         NodeValue left = largestBSTUtil(root.left);
         NodeValue right = largestBSTUtil(root.right);
         
-        if((left.isBST && right.isBST) && left.max < root.data && root.data < right.min){
+        if(left.max < root.data && root.data < right.min){
             int max = Math.max(right.max,root.data);
             int min = Math.min(left.min,root.data);
             int size = 1 + left.size + right.size;
-            return new NodeValue(true, max, min, size);
+            return new NodeValue(max, min, size);
         }
         
-        return new NodeValue(false, Integer.MAX_VALUE, Integer.MIN_VALUE, Math.max(left.size, right.size));
+        return new NodeValue(Integer.MAX_VALUE, Integer.MIN_VALUE, Math.max(left.size, right.size));
     }
     
 }
