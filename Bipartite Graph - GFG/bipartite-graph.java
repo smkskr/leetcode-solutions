@@ -66,7 +66,6 @@ class Solution
                 
                  if(color[v] == -1){
                     color[v] = 1 - color[u];
-                    if(color[u] == color[v])return false;
                     queue.add(v);
                 }
                 else if(color[u] == color[v])return false;
