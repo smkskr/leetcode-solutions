@@ -52,8 +52,7 @@ class Solution
         }
         
         
-        boolean[] visited = new boolean[n];
-        dfs(adjList, visited, s, d);
+        dfs(adjList, s, d);
         return count;
         
     }
@@ -63,18 +62,16 @@ class Solution
     }
     
     
-    public void dfs(ArrayList<ArrayList<Integer>> adjList, boolean[] visited, int source, int destination){
-        visited[source] = true;
+    public void dfs(ArrayList<ArrayList<Integer>> adjList, int source, int destination){
         
         for(int u : adjList.get(source)){
-            if(visited[u] == false){
-                visited[u] = true;
-                if(u == destination)count++;
-                dfs(adjList, visited, u, destination);
-            }
+          
+                if(u == destination){
+                    count++;return;
+                }
+                dfs(adjList, u, destination);
+            
         }
-        
-        visited[source] = false;
         
     }
 }
