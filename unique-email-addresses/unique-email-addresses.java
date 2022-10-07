@@ -3,9 +3,6 @@ class Solution {
         
         Set<String> uniqueEmails = new HashSet<>();
         for(String email : emails){
-            //split by @
-            //split by +
-            //replace "." with ""
             String[] splitByAtRate = email.split("@");
             String[] splitByPlus = splitByAtRate[0].split("\\+");
             StringBuilder localName = new StringBuilder();
