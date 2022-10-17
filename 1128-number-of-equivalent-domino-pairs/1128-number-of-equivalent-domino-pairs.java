@@ -12,9 +12,7 @@ class Solution {
         }
         int count = 0;
         for(Map.Entry<String,Integer> entry : countMap.entrySet()){
-            if(entry.getValue() > 1){
                 count += (entry.getValue() * (entry.getValue() - 1))/2;
-            }
         }
         
         return count;
